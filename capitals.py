@@ -1,5 +1,7 @@
 # an array of state dictionaries
-states = [
+import random
+
+states_dict = [
 {
     "name": "Alabama",
     "capital": "Montgomery"
@@ -9,6 +11,7 @@ states = [
 }, {
     "name": "Arizona",
     "capital": "Phoenix"
+    
 }, {
     "name": "Arkansas",
     "capital": "Little Rock"
@@ -150,4 +153,53 @@ states = [
 }, {
     "name": "Wyoming",
     "capital": "Cheyenne"
-}]
+}
+]
+print('Welcome to the capitals game. Each time you are shown a state type in what the capital is.')
+
+score = {
+    'correct': 0,
+    'incorrect': 0
+}
+
+
+def start():
+
+    for state in states_dict:
+
+        capital_guess = input('What is the capital of ' + state["name"] + '?')
+
+        if capital_guess == state["capital"]:
+            print('Correct! Nice job!')
+            score['correct'] += 1
+            print(score)
+        else:
+            print('Incorrect.  The Capital of ' + state["name"] + ' is ' + state["capital"] + '.')
+            score['incorrect'] += 1
+            print(score)
+start()
+
+def play_again():
+        if score['correct'] + score['incorrect'] == 50 : 
+            question = input(f"All done. You got {score['correct']} correct, and {score['incorrect']} incorrect. Do you want to play again? type y or n.")
+            answer = str(input())
+            if answer in question == 'y':
+                score["correct"] = 0
+                score['incorrect'] = 0
+                start()
+                play_again()
+            else:
+                exit()
+play_again()
+
+
+
+
+
+
+    
+    
+
+
+
+
